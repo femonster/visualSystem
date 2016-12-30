@@ -5,9 +5,34 @@ tableTmp ={
         $(obj).removeClass('m-table-content');
         var str="<div><table><thead><tr><th>标题一</th>"+
                 "<th>标题二</th><th>标题三</th></tr></thead>"+
-                "<tbody><tr><td>2</td><td>2</td><td>2</td></tr><tr><td>2</td><td>2</td><td>2</td></tr><tr><td>2</td><td>2</td><td>2</td></tr></tbody></table></div>"
+                "<tbody><tr><td>col1-1</td><td>col1-2</td><td>col1-3</td></tr><tr><td>col2-1</td><td>col2-2</td><td>col2-3</td></tr><tr><td>col3-1</td><td>col3-2</td><td>col3-3</td></tr></tbody></table></div>"
         var $table = $(str);
          $(obj).append($table);
+    },
+    update:function(obj){
+    	var oldStr="",
+    		$input=$("<input type='text' class='form-control'/>");
+
+    	$(obj).on('dblclick','th',function(ev){
+    		var target = ev.target;
+    		oldStr = target.innerHTML;
+    		target.innerHTML="";
+    		$input.val(oldStr);
+    		$(target).append($input);
+    		$input.focus();
+    		$input.on('blur',function(ev){
+    			var $th = $(this).parent();
+    			$th.html($(this).val());
+    		});
+    		$input.on('keydown',function(ev){
+    			if(ev.which==13){
+    				var $th = $(this).parent();
+    				$th.html($(this).val());
+    			}
+    			
+    		});
+
+    	});
     }
 }
  module.exports=tableTmp;

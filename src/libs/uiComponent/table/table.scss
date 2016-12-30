@@ -37,6 +37,11 @@ table{
             background-color:#fff;
         }
     }
+
+    input[type="text"]{
+        width: 50%;
+        margin: 0 auto;
+    }
     
     input[type="button"],button{
         color:red;

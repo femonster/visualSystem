@@ -1,6 +1,5 @@
     require('../scss/index.scss');
-
-     var tableTmp=require('table');
+    var tableTmp=require('table');
 
     //布局设置（宽，高）
     $('.g-wrap').height($(document).height()-45);
@@ -8,6 +7,7 @@
         $('.g-wrap').height($(document).height()-45);
     });
 
+    //拖拽组件
     $('.m-drag-list').sortable({
         animation:150,
         sort: false,
@@ -63,6 +63,27 @@
         $(this).parent().remove();
     });
 
+    //编辑布局框
+    $(oAimWrap).on('click','.m-demo-update-handler',function(ev){
+        var oBoxParNam = this.parentElement.dataset.aname;
+        alert(oBoxParNam);
+        if(oBoxParNam=="header"){
+            updateHeader(this.parentElement);
+        }
+        if(oBoxParNam=="nav"){
+            updateNav(this.parentElement);
+        }
+        if(oBoxParNam=="table"){
+            updateTable(this.parentElement);
+        }
+        if(oBoxParNam=="fpage"){
+            updateFpage(this.parentElement);
+        }
+        if(oBoxParNam=="riqi"){
+            updateRiqi(this.parentElement);
+        }
+    });
+
 
     //克隆布局框
     $('.g-gide-box').sortable({
@@ -112,6 +133,10 @@
           $('#btn-empty').attr('disabled',false);
     });
 
+
+
+
+
     //生成代码
     $("#create-code").on('click',function(){
         if($(this).hasClass('btn-success')){return;}
@@ -119,9 +144,12 @@
         $(this).addClass('btn-success').removeClass('btn-default');
     });
 
-    //生成组件
+
+
+    //生成组件(obj是指当前组件的DOM元素,需要jq元素时需要用$(obj))
     function createtable(obj) {
         tableTmp.init(obj);
+        tableTmp.update(obj);
     }
     function createnav(obj) {
         $(obj).removeClass('m-nav-content');
@@ -147,4 +175,22 @@
         $(obj).removeClass('m-riqi-content');
         var $tmp = $("<div><h1>datepicker拖进来了</h1></div>");
         $(obj).append($tmp);
+    }
+
+
+    //编辑组件(obj是指当前组件的DOM元素,需要jq元素时需要用$(obj))
+    function updateHeader(obj) {
+        
+    }
+    function updateTable(obj) {
+        
+    }
+    function updateNav(obj) {
+        
+    }
+    function updateFpage(obj) {
+        
+    }
+    function updateRiqi(obj) {
+        
     }

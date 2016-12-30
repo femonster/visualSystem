@@ -1,0 +1,51 @@
+#confirmBoxContainer{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    top: 0;
+    .body{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 450px;
+        margin-left: -225px;
+        background: #fff;
+        box-shadow: 0 0 8px 4px rgba(0,0,0,0.2);
+        p{
+            font-size: 16px;
+            color: #646464;
+            text-align: center;
+            padding: 30px 0 20px;
+        }
+    }
+
+    .btn{
+        display: inline-block;
+        text-align: center;
+        padding: 4px 0;
+        width: 80px;
+        border: 1px solid #c9c9c9;
+        border-radius: 1px;
+        cursor: pointer;
+    }
+
+    .btn:first-child{
+        margin-left: 240px;
+    }
+
+    .btn:last-child{
+        margin-right: 10px;
+    }
+
+    #btnContainner{
+        overflow: hidden;
+        padding: 13px 10px;
+        border-top: solid 1px #dfdfdf;
+        div:last-child{
+            float: right;
+        }
+        padding-bottom: 10px;
+    }
+}

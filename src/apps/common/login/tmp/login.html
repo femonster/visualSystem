@@ -1,0 +1,60 @@
+<div class="layer-shade-login">
+    <div class="layer-box-login" style="width:320px">
+        <div class="layer-close-login"></div>
+        <ul class="layer-tab-login">
+            <li class="tab-item" data-form="log-form">登 录</li>
+            <li class="tab-item" data-form="reg-form">注 册</li>
+        </ul>
+        <form class="form-box log-form">
+            <div class="input-block">
+                <input type="text" class="l-uno" name="email" placeholder="邮箱/手机号/用户名" autofocus="autofocus">
+            </div>
+            <div class="input-block">
+                <input type="password" class="l-password" name="password" placeholder="输入密码">
+            </div>
+            <div class="input-block captcha-log" style="display:none">
+                <input type="text" id="icode" name="icode" placeholder="输入验证码">
+                <div class="verifyPic" data-type="1">
+                	<img id="verifyPic_login" src="http://icode.renren.com/getcode.do?t=web_login&amp;rnd=Math.random()">
+                </div>
+            </div>
+            <div class="input-block"  style="height:20px">
+            	<a href="http://safe.renren.com/findPass.do" class="forget-pwd">忘记密码?</a>
+            	<!-- <div class="remember-box">
+		            <input type="checkbox" class="remember-me" id="remember-me" name="autoLogin">
+		            <label for="remember-me">记住我</lable>
+            	</div> -->
+            </div>
+            <div class="log-btn">登录</div>
+        </form>
+        <form class="form-box reg-form">
+            <div class="input-block">
+                <input type="text" class="r-phone" placeholder="请输入手机号" maxlength="11" autofocus="autofocus">
+            </div>
+            <div class="input-block">
+                <input type="text" class="input-code r-code" placeholder="输入验证码">
+                <input type="button" class="get-code" value="获取验证码">
+            </div>
+            <div class="input-block">
+                <input type="password" class="r-password" placeholder="请输入6位及以上密码">
+            </div>
+            <div class="reg-btn">注 册</div>
+        </form>
+        <div class="login-other">
+            <div class="line">
+            	<p>第三方登录</p>
+            </div>
+            <ul class="login-app">
+                <li class="login-weixin">
+                	<a href="http://www.renren.com/api/jump?src=wx&frd=zhibo&furl={{furl}}"></a>
+                </li>
+                <li class="login-qq">
+                	<a href="http://www.renren.com/api/jump?src=qq&frd=zhibo&furl={{furl}}"></a>
+                </li>
+                <li class="login-weibo">
+                	<a href="http://www.renren.com/api/jump?src=wb&frd=zhibo&furl={{furl}}"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<li class="live-item" data-id="{{item.id}}">
+    <div class="poster" style="background-image:url({{item.coverImgUrl}})"></div>
+    <div class="live-state live-state-{{type}}">{{liveState}}</div>
+    <div class="bottom-bar">
+        <div class="live-title ellip">{{item.title}}</div>
+        <div class="viewer"><span class="viewer-num">{{item.viewCount}}</span> 人观看</div>
+    </div>
+    <div class="live-mask" data-id="{{item.id}}">
+        <div class="live-shadow">
+            <div class="anchor-info ellip">
+                <img src="{{item.headUrl}}">
+                <span class="anchor-name">{{item.name}}</span>
+            </div> 
+        </div>
+    </div>
+</li>

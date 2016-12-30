@@ -1,0 +1,48 @@
+
+		 body{position: relative;}
+		 h1,h2,h3,h4,h5,h6{margin: 0;}
+		.g-header,.g-wrap,.g-section,.g-aside{position: absolute;}
+		.g-header{width: 100%;height: 43px;background-color:lightblue;top: 0;}
+		.g-wrap{width: 100%;background-color: #999;top: 45px;min-width: 1254px;}
+		.g-aside{width: 20%;height:100%;top: 0;}
+		.g-section{width: 80%;height: 100%;top: 0;right:0;background-color: #c0c0c0;padding: 10px;}
+		.g-drag-box,.g-control-box{width: 100%;}
+		.g-drag-box{height: 36%;background-color:#eee;border-bottom: 2px solid #999;}
+		.g-gide-box{height: 32%;background-color:#eee;border-bottom: 2px solid #999;}
+		.g-control-box{height: 32%;background-color:#eee;}
+		.sortable-ghost {opacity: 0.4;background-color: #F4E2C9;}
+		
+		.g-gide-box .m-demo-item{cursor:move;margin-bottom: 10px;width: 100%; border: 2px dotted #999;border-radius: 5px;background-color: #fff; font-size: 12px;text-align: center;color: #e99;position: relative;padding:5px 0;line-height: 12px;}
+		.g-gide-box .m-demo-item span,.g-gide-box .m-demo-item p{display: none;}
+		.g-gide-box .m-header-content:after{content:"头部模块区域"}
+		.g-gide-box .m-nav-content:after{content:"导航栏模块区域"}
+		.g-gide-box .m-fpage-content:after{content:"分页模块区域"}
+		.g-gide-box .m-riqi-content:after{content:"日期模块区域"}
+		.g-gide-box .m-table-content:after{content:"表格模块区域"}
+		// .g-gide-box .m-demo-item .m-demo-drag-handler{left: 4px;}
+		// .g-gide-box .m-demo-item .m-demo-del-handler{left: 58px;}
+		// .g-gide-box .m-demo-item .m-demo-update-handler{left: 112px;}
+		
+		.g-section .m-demo-item{margin-bottom: 10px;width: 100%;border: 2px dotted #999;border-radius: 5px;background-color: #fff; font-size: 24px;text-align: center;color: #e99;position: relative;padding:10px 0;line-height: 25px;}
+		.g-section .m-demo-item:hover span{opacity: 1;}
+		.g-section .m-demo-item span{position: absolute;display: block;width: 50px;height: 20px;font-size: 12px;line-height: 16px;top: 4px;opacity: 0.4;transition: 0.4s;}
+		.g-section .m-demo-item .m-demo-drag-handler{left: 4px;}
+		.g-section .m-header-content:after{content:"将header组件拖向此区域";}
+		.g-section .m-nav-content:after{content:"将nav组件拖向此区域"}
+		.g-section .m-fpage-content:after{content:"将fpage组件拖向此区域"}
+		.g-section .m-riqi-content:after{content:"将datepicker组件拖向此区域"}
+		.g-section .m-table-content:after{content:"将table组件拖向此区域"}
+		.g-section .m-demo-item .m-demo-del-handler{left: 58px;}
+		.g-section .m-demo-item .m-demo-update-handler{left: 112px;}
+		.g-section .m-demo-item .m-demo-del-handler:hover{cursor: pointer;}
+		.g-section .m-demo-item .m-demo-drag-handler:hover{cursor: move;}
+		.g-section .m-demo-item .m-demo-update-handler:hover{cursor:pointer;}
+
+		.g-header .u-title{margin-left:10px;line-height: 43px;}
+		.g-header .u-toolbar{margin: 5px 0 0 100px;}
+		
+		.g-aside .u-drag-title{padding: 10px;}
+		.g-aside .m-drag-list li{border-radius: 0;z-index: 100;}
+		.g-aside .m-drag-list:hover{cursor: move;}
+
+		

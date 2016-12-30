@@ -1,0 +1,18 @@
+.toast{
+	position: absolute;
+	width: auto;
+	min-width: 100px;
+	box-sizing: border-box;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate3d(-50%,-50%,0);
+	transform: translate3d(-50%,-50%,0);
+	padding: 10px 15px;
+	background: rgba(0,0,0,.7);
+	border-radius: 5px;
+	z-index: 100001;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+	font-family: 'Microsoft yahei';
+}

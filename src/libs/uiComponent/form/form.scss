@@ -1,0 +1,85 @@
+.popUp-layer,.window-div {
+    display: none;
+}
+.popUp-layer {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+.popUp-layer .window-div {
+    z-index: 101;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    color: #666;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 6px;
+}
+.popUp-layer .top-div{
+    box-sizing: border-box;
+    border-radius: 6px 6px 0 0;
+    width: 100%;
+    height: 50px;
+    background-color: #1fa7fb;
+    border-bottom: 4px solid #0099fa;
+    line-height: 50px;
+    font-size: 16px;
+    color: #fff;
+}
+.popUp-layer .bottom-div {
+    display: inline-block;
+    height: 33px;
+    color: #fff;
+    background-color: #009bfa;
+    border: 1px solid #009bfa;
+    border-radius: 3px;
+    padding: 0 30px;
+    outline: none;
+    cursor: pointer;
+}
+.popUp-layer .content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 30px;
+}
+.popUp-layer .form{
+    
+     width: 100%;
+    box-sizing: border-box;
+    padding: 5px 30px;
+}
+
+.popUp-layer textarea {
+    resize: none;
+}
+
+.popUp-layer .fileImg-wrap,.popUp-layer .fileVideo-wrap {
+    float: left;
+    width: 60px;
+    height: 35px;
+    font-size: 14px;
+    position: relative;
+    margin-left: 20px;
+    overflow: hidden;
+    color: #009bfa;
+}
+.popUp-layer .fileImg-inside,.popUp-layer .fileVideo-inside {
+    position: absolute;
+    top: -5px;
+    right: 0;
+    left: -72px;
+    bottom: 6px;
+    opacity: 0;
+    cursor: pointer;
+    outline: 1px solid #666;
+}

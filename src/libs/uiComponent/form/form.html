@@ -1,0 +1,86 @@
+
+
+
+    <div class="popUp-layer" style="display: block;">
+        <!-- 添加勋章 -->
+        <div class="anchor-add window-div" style="height: 620px; display: block;">
+            <div class="top-div">
+                <span>{{title}}</span>
+            </div>
+            <span class="anchor-add-close close-btn"></span>
+            <div class={{content}}>
+                <div class="form-group">
+                    <label>活动名称</label>
+                    <input class="form-input activity-name" type="text">
+                </div>
+                <div class="form-group">
+                    <label>勋章名称：</label>
+                    <input class="form-input medal-name" type="text">
+                </div>
+                <div class="form-group">
+                    <label>勋章图片：</label>
+                    <a class="upload ui-fileupload">
+                        <input type="file" multiple="multiple">
+                    </a>
+                    <!-- <input type="hidden" name="picUrl" class="upload-input" value=""> -->
+                    <img class="medal-pic" src="" alt="">
+                </div>
+                <!-- IOS 动态图 -->
+                <div class="form-group" style="margin-top:90px">
+                    <!-- 隐藏的iframe，用于模拟Ajax上传图片（不刷新页面），图片只能用form表单上传 -->
+                    <iframe name="uploadframe" src="http://www.renren.com/ajaxProxy.html" style="display: none;"></iframe>
+                    <form id="zipForm" action="http://upload.renren.com/upload.fcgi" method="post" enctype="multipart/form-data" target="uploadframe">
+                        <label>IOS动态图片：</label>
+                        <input type="file" name="file" class="zipFile">
+                        <p class="showZip">
+                            <a href="" id="showUrl"></a>
+                        </p>
+                        <input type="hidden" name="pagetype" value="clientDecal">
+                        <!--<input type="hidden" name="pagetype" value="mcsvideo">-->
+                        <input type="hidden" name="tick" value="ugc.renren.com_bd76abd76ce5df8b67b2">
+                        <input type="hidden" name="hostid" value="172860266">
+                        <input type="hidden" name="uploadid" value="1411281455">
+                        <input type="hidden" name="callback" value="parent.uploadCallback1">
+                    </form>
+                </div>
+                <!-- Android 动态图 -->
+                <div class="form-group" style="margin-top:50px">
+                    <iframe name="uploadframe" src="http://www.renren.com/ajaxProxy.html" style="display: none;"></iframe>
+                    <form id="imgForm" action="http://upload.renren.com/upload.fcgi" method="post" enctype="multipart/form-data" target="uploadframe">
+                        <label>安卓动态图片：</label>
+                        <input type="file" name="file" class="imgFile">
+                        <p class="showZip">
+                            <img id="showUrl2" src="">
+                            <!-- <a href="" id="showUrl"></a> -->
+                        </p>
+                        <input type="hidden" name="pagetype" value="clientDecal">
+                        <!--<input type="hidden" name="pagetype" value="mcsvideo">-->
+                        <input type="hidden" name="tick" value="ugc.renren.com_bd76abd76ce5df8b67b2">
+                        <input type="hidden" name="hostid" value="172860266">
+                        <input type="hidden" name="uploadid" value="1411281455">
+                        <input type="hidden" name="callback" value="parent.uploadCallback2">
+                    </form>
+                </div>
+                <div class="form-group" style="margin-top:90px;">
+                    <label>勋章类型：</label>
+                    <select class="medal-type form-input">
+                        <option value="1">月榜排行榜勋章</option>
+                        <option value="2">周榜排行榜勋章</option>
+                        <option value="3" selected="">活动勋章</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>颜色等级：</label>
+                    <select class="medal-color form-input">
+                        <option value="1">白</option>
+                        <option value="2">绿</option>
+                        <option value="3">蓝</option>
+                        <option value="4">紫</option>
+                        <option value="5">橙</option>
+                    </select>
+                </div>
+                <button class="apply-submit bottom-div" type="button" data-id="0">提交</button>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,80 @@
+.unionAdmin-header {
+    width: 100%;
+    min-width: 1280px;
+    height: 60px;
+    background-color: #009bfa;
+}
+
+.header-box {
+    width: 70%;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.header-box-logo {
+    float: left;
+    width: 260px;
+    height: 60px;
+    cursor: pointer;
+    line-height: 60px;
+}
+
+.header-box-logo img {
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.header-box-union,
+.header-box-notice,
+.header-box-exit {
+    float: right;
+    position: relative;
+    height: 60px;
+    font-size: 14px;
+    line-height: 60px;
+    color: #fff;
+    text-indent: 30px;
+    cursor: pointer;
+}
+
+.header-box-notice .notice {
+    display: none;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background: red;
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}
+
+.header-box-union {
+    background: no-repeat 0 20px;
+}
+
+.header-box-union a,
+.header-box-exit a {
+    color: white;
+}
+
+.header-box-union a:hover {
+    text-decoration: underline;
+}
+.header-box-notice {
+    width: 88px;
+    margin-left: 30px;
+    background: no-repeat 0 -60px;
+}
+.union-img {
+    position: absolute;
+    top: 50%;
+    left: -5px;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    width: 25px;
+    height: 25px;
+    padding: 0 5px;
+}

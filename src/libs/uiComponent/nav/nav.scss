@@ -1,0 +1,107 @@
+/**
+ * @author ruimin.liu
+ * @module nav样式
+ * @date 2016/12/12
+ */
+.unionAdmin-nav {
+    width: 100%;
+    min-width: 1250px;
+    height: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #d3d0d1;
+}
+.nav-menu {
+    height: 50px;
+    position: relative;
+    display: inline-block;
+    margin-left: 19%;
+    text-align: center;
+    line-height: 50px;
+}
+.nav-menu>li {
+    float: left;
+    box-sizing: border-box;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    margin-right: 15px;
+    width: 110px;
+    position: relative;
+    -webkit-transition: color .15s;
+    -moz-transition: color .15s;
+    -ms-transition: color .15s;
+    transition: color .15s;
+    cursor: pointer;
+}
+.nav-menu>li:hover {
+    color: #000;
+    font-weight: bold;
+}
+/*当前点击样式*/
+.nav-menu .nav-active {
+    color: #009bfa;
+    font-weight: bold;
+}
+.nav-menu .nav-active:hover {
+    color: #009bfa;
+    font-weight: bold;
+}
+.nav-menu .nav-show {
+    border-left: 1px solid #d3d0d1;
+    border-right: 1px solid #d3d0d1;
+    background-color: #f8f8f8;
+}
+/*主播管理*/
+.nav-li-menu:before {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    top: 19px;
+    right: 8px;
+    width: 9px;
+    height: 9px;
+    border-right: 3px solid #a0a0a0;
+    border-bottom: 3px solid #a0a0a0;
+    -webkit-transform: rotateZ(45deg) scale(0.9);
+    -ms-transform: rotateZ(45deg) scale(0.9);
+    -o-transform: rotateZ(45deg) scale(0.9);
+    transform: rotateZ(45deg) scale(0.9);
+}
+
+/*
+添加数据查询，二级菜单
+*/
+.nav-menu .nav-sec-menu{
+    display: none;
+    box-sizing: border-box;
+    z-index: 100;
+    position: absolute;
+    left: -1px;
+    width: 110px;
+    font-size: 15px;
+    color: #666;
+    line-height: 15px;
+    font-weight: normal;
+    background-color: #fff;
+    border: 1px solid #d3d0d1;
+    border-radius: 0 0 5px 5px;
+}
+.nav-anchor .nav-anchor-menu{
+    height: 148px;
+}
+.nav-operate .nav-operate-menu{
+    height: 180px;
+}
+.nav-li-menu a{
+    display: block;
+    height: 32px;
+    line-height: 32px;
+}
+.nav-li-menu a:nth-of-type(1){
+    margin-top: 10px;
+}
+.nav-li-menu a:hover{
+    font-weight: bold;
+}
+.nav-li-menu a:active{
+    color: #009bfa;
+}

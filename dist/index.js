@@ -52,8 +52,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	    __webpack_require__(2);
-
-	     var tableTmp=__webpack_require__(6);
+	    var tableTmp=__webpack_require__(6);
 
 	    //布局设置（宽，高）
 	    $('.g-wrap').height($(document).height()-45);
@@ -61,6 +60,7 @@
 	        $('.g-wrap').height($(document).height()-45);
 	    });
 
+	    //拖拽组件
 	    $('.m-drag-list').sortable({
 	        animation:150,
 	        sort: false,
@@ -111,9 +111,29 @@
 	        }
 	    });
 
-	    //删除布局框
+	    //删除布局组件
 	    $(oAimWrap).on('click','.m-demo-del-handler',function(){
 	        $(this).parent().remove();
+	    });
+
+	    //编辑布局组件
+	    $(oAimWrap).on('click','.m-demo-update-handler',function(ev){
+	        var oBoxParNam = this.parentElement.dataset.aname;
+	        if(oBoxParNam=="header"){
+	            updateHeader(this.parentElement);
+	        }
+	        if(oBoxParNam=="nav"){
+	            updateNav(this.parentElement);
+	        }
+	        if(oBoxParNam=="table"){
+	            updateTable(this.parentElement);
+	        }
+	        if(oBoxParNam=="fpage"){
+	            updateFpage(this.parentElement);
+	        }
+	        if(oBoxParNam=="riqi"){
+	            updateRiqi(this.parentElement);
+	        }
 	    });
 
 
@@ -165,6 +185,10 @@
 	          $('#btn-empty').attr('disabled',false);
 	    });
 
+
+
+
+
 	    //生成代码
 	    $("#create-code").on('click',function(){
 	        if($(this).hasClass('btn-success')){return;}
@@ -172,9 +196,12 @@
 	        $(this).addClass('btn-success').removeClass('btn-default');
 	    });
 
-	    //生成组件
+
+
+	    //生成组件(obj是指当前组件的DOM元素,需要jq元素时需要用$(obj))
 	    function createtable(obj) {
 	        tableTmp.init(obj);
+	        tableTmp.update(obj);
 	    }
 	    function createnav(obj) {
 	        $(obj).removeClass('m-nav-content');
@@ -202,6 +229,26 @@
 	        $(obj).append($tmp);
 	    }
 
+
+	    //编辑组件(obj是指当前组件的DOM元素,需要jq元素时需要用$(obj))
+	    function updateHeader(obj) {
+	        $('.u-edit-box').html("wahaha");
+	    }
+	    function updateTable(obj) {
+	        if($('.u-input-group').length<=0){
+	             tableTmp.edit(obj);
+	         }
+	       
+	    }
+	    function updateNav(obj) {
+	        
+	    }
+	    function updateFpage(obj) {
+	        
+	    }
+	    function updateRiqi(obj) {
+	        
+	    }
 
 /***/ },
 /* 2 */
@@ -238,7 +285,7 @@
 
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\nbody {\n  position: relative; }\n\nh1, h2, h3, h4, h5, h6 {\n  margin: 0; }\n\n.g-header, .g-wrap, .g-section, .g-aside {\n  position: absolute; }\n\n.g-header {\n  width: 100%;\n  height: 43px;\n  background-color: lightblue;\n  top: 0; }\n\n.g-wrap {\n  width: 100%;\n  background-color: #999;\n  top: 45px;\n  min-width: 1254px; }\n\n.g-aside {\n  width: 20%;\n  height: 100%;\n  top: 0; }\n\n.g-section {\n  width: 80%;\n  height: 100%;\n  top: 0;\n  right: 0;\n  background-color: #c0c0c0;\n  padding: 10px; }\n\n.g-drag-box, .g-control-box {\n  width: 100%; }\n\n.g-drag-box {\n  height: 36%;\n  background-color: #eee;\n  border-bottom: 2px solid #999; }\n\n.g-gide-box {\n  height: 32%;\n  background-color: #eee;\n  border-bottom: 2px solid #999; }\n\n.g-control-box {\n  height: 32%;\n  background-color: #eee; }\n\n.sortable-ghost {\n  opacity: 0.4;\n  background-color: #F4E2C9; }\n\n.g-gide-box .m-demo-item {\n  cursor: move;\n  margin-bottom: 10px;\n  width: 100%;\n  border: 2px dotted #999;\n  border-radius: 5px;\n  background-color: #fff;\n  font-size: 12px;\n  text-align: center;\n  color: #e99;\n  position: relative;\n  padding: 5px 0;\n  line-height: 12px; }\n\n.g-gide-box .m-demo-item span, .g-gide-box .m-demo-item p {\n  display: none; }\n\n.g-gide-box .m-header-content:after {\n  content: \"\\5934\\90E8\\6A21\\5757\\533A\\57DF\"; }\n\n.g-gide-box .m-nav-content:after {\n  content: \"\\5BFC\\822A\\680F\\6A21\\5757\\533A\\57DF\"; }\n\n.g-gide-box .m-fpage-content:after {\n  content: \"\\5206\\9875\\6A21\\5757\\533A\\57DF\"; }\n\n.g-gide-box .m-riqi-content:after {\n  content: \"\\65E5\\671F\\6A21\\5757\\533A\\57DF\"; }\n\n.g-gide-box .m-table-content:after {\n  content: \"\\8868\\683C\\6A21\\5757\\533A\\57DF\"; }\n\n.g-section .m-demo-item {\n  margin-bottom: 10px;\n  width: 100%;\n  border: 2px dotted #999;\n  border-radius: 5px;\n  background-color: #fff;\n  font-size: 24px;\n  text-align: center;\n  color: #e99;\n  position: relative;\n  padding: 10px 0;\n  line-height: 25px; }\n\n.g-section .m-demo-item:hover span {\n  opacity: 1; }\n\n.g-section .m-demo-item span {\n  position: absolute;\n  display: block;\n  width: 50px;\n  height: 20px;\n  font-size: 12px;\n  line-height: 16px;\n  top: 4px;\n  opacity: 0.4;\n  transition: 0.4s; }\n\n.g-section .m-demo-item .m-demo-drag-handler {\n  left: 4px; }\n\n.g-section .m-header-content:after {\n  content: \"\\5C06header\\7EC4\\4EF6\\62D6\\5411\\6B64\\533A\\57DF\"; }\n\n.g-section .m-nav-content:after {\n  content: \"\\5C06nav\\7EC4\\4EF6\\62D6\\5411\\6B64\\533A\\57DF\"; }\n\n.g-section .m-fpage-content:after {\n  content: \"\\5C06  fpage\\7EC4\\4EF6\\62D6\\5411\\6B64\\533A\\57DF\"; }\n\n.g-section .m-riqi-content:after {\n  content: \"\\5C06  datepicker\\7EC4\\4EF6\\62D6\\5411\\6B64\\533A\\57DF\"; }\n\n.g-section .m-table-content:after {\n  content: \"\\5C06table\\7EC4\\4EF6\\62D6\\5411\\6B64\\533A\\57DF\"; }\n\n.g-section .m-demo-item .m-demo-del-handler {\n  left: 58px; }\n\n.g-section .m-demo-item .m-demo-update-handler {\n  left: 112px; }\n\n.g-section .m-demo-item .m-demo-del-handler:hover {\n  cursor: pointer; }\n\n.g-section .m-demo-item .m-demo-drag-handler:hover {\n  cursor: move; }\n\n.g-section .m-demo-item .m-demo-update-handler:hover {\n  cursor: pointer; }\n\n.g-header .u-title {\n  margin-left: 10px;\n  line-height: 43px; }\n\n.g-header .u-toolbar {\n  margin: 5px 0 0 100px; }\n\n.g-aside .u-drag-title {\n  padding: 10px; }\n\n.g-aside .m-drag-list li {\n  border-radius: 0;\n  z-index: 100; }\n\n.g-aside .m-drag-list:hover {\n  cursor: move; }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\nbody {\n  position: relative; }\n\nh1, h2, h3, h4, h5, h6 {\n  margin: 0; }\n\nul li {\n  list-style: none; }\n\nlabel {\n  font-weight: 500; }\n\n.g-header, .g-wrap, .g-section, .g-aside {\n  position: absolute; }\n\n.g-header {\n  width: 100%;\n  height: 43px;\n  background-color: lightblue;\n  top: 0; }\n\n.g-wrap {\n  width: 100%;\n  background-color: #999;\n  top: 45px;\n  min-width: 1254px; }\n\n.g-aside {\n  width: 20%;\n  height: 100%;\n  top: 0; }\n\n.g-section {\n  width: 80%;\n  height: 100%;\n  top: 0;\n  right: 0;\n  background-color: #c0c0c0;\n  padding: 10px;\n  overflow-y: scroll; }\n\n.g-drag-box, .g-control-box {\n  width: 100%; }\n\n.g-drag-box {\n  height: 36%;\n  background-color: #eee;\n  border-bottom: 2px solid #999; }\n\n.g-gide-box {\n  height: 26%;\n  background-color: #eee;\n  border-bottom: 2px solid #999; }\n\n.g-control-box {\n  height: 38%;\n  background-color: #eee; }\n\n.sortable-ghost {\n  opacity: 0.4;\n  background-color: #F4E2C9; }\n\n.g-gide-box .m-demo-item {\n  cursor: move;\n  margin-bottom: 10px;\n  width: 100%;\n  border: 2px dotted #999;\n  border-radius: 5px;\n  background-color: #fff;\n  font-size: 12px;\n  text-align: center;\n  color: #e99;\n  position: relative;\n  padding: 5px 0;\n  line-height: 12px; }\n\n.g-gide-box .m-demo-item span, .g-gide-box .m-demo-item p {\n  display: none; }\n\n.g-gide-box .m-header-content:after {\n  content: \"\\5934\\90E8\\6A21\\5757\\533A\\57DF\"; }\n\n.g-gide-box .m-nav-content:after {\n  content: \"\\5BFC\\822A\\680F\\6A21\\5757\\533A\\57DF\"; }\n\n.g-gide-box .m-fpage-content:after {\n  content: \"\\5206\\9875\\6A21\\5757\\533A\\57DF\"; }\n\n.g-gide-box .m-riqi-content:after {\n  content: \"\\65E5\\671F\\6A21\\5757\\533A\\57DF\"; }\n\n.g-gide-box .m-table-content:after {\n  content: \"\\8868\\683C\\6A21\\5757\\533A\\57DF\"; }\n\n.g-section .m-demo-item {\n  margin-bottom: 10px;\n  width: 100%;\n  border: 2px dotted #999;\n  border-radius: 5px;\n  background-color: #fff;\n  font-size: 24px;\n  text-align: center;\n  color: #e99;\n  position: relative;\n  padding: 10px 0;\n  line-height: 25px; }\n\n.g-section .m-demo-item:hover span {\n  opacity: 1; }\n\n.g-section .m-demo-item span {\n  position: absolute;\n  display: block;\n  width: 50px;\n  height: 20px;\n  font-size: 12px;\n  line-height: 16px;\n  top: 4px;\n  opacity: 0.4;\n  transition: 0.4s; }\n\n.g-section .m-demo-item .m-demo-drag-handler {\n  left: 4px; }\n\n.g-section .m-header-content:after {\n  content: \"\\5C06header\\7EC4\\4EF6\\62D6\\5411\\6B64\\533A\\57DF\"; }\n\n.g-section .m-nav-content:after {\n  content: \"\\5C06nav\\7EC4\\4EF6\\62D6\\5411\\6B64\\533A\\57DF\"; }\n\n.g-section .m-fpage-content:after {\n  content: \"\\5C06  fpage\\7EC4\\4EF6\\62D6\\5411\\6B64\\533A\\57DF\"; }\n\n.g-section .m-riqi-content:after {\n  content: \"\\5C06  datepicker\\7EC4\\4EF6\\62D6\\5411\\6B64\\533A\\57DF\"; }\n\n.g-section .m-table-content:after {\n  content: \"\\5C06table\\7EC4\\4EF6\\62D6\\5411\\6B64\\533A\\57DF\"; }\n\n.g-section .m-demo-item .m-demo-del-handler {\n  left: 58px; }\n\n.g-section .m-demo-item .m-demo-update-handler {\n  left: 112px; }\n\n.g-section .m-demo-item .m-demo-del-handler:hover {\n  cursor: pointer; }\n\n.g-section .m-demo-item .m-demo-drag-handler:hover {\n  cursor: move; }\n\n.g-section .m-demo-item .m-demo-update-handler:hover {\n  cursor: pointer; }\n\n.g-header .u-title {\n  margin-left: 10px;\n  line-height: 43px; }\n\n.g-header .u-toolbar {\n  margin: 5px 0 0 100px; }\n\n.g-aside .u-drag-title {\n  padding: 10px; }\n\n.g-aside .u-edit-box {\n  width: 100%;\n  height: 78%;\n  overflow-y: scroll; }\n\n.g-aside .m-drag-list li {\n  border-radius: 0;\n  z-index: 100; }\n\n.g-aside .m-drag-list:hover {\n  cursor: move; }\n\n.u-input-group {\n  width: 99%;\n  margin: 3px auto 0;\n  border: 1px solid #999;\n  position: relative;\n  font-size: 13px;\n  font-family: Arial; }\n\n.f-del {\n  position: absolute;\n  right: 7px;\n  top: 7px; }\n\n.u-group-list {\n  margin-top: 15px;\n  padding-left: 15px; }\n\n.u-group-list span {\n  display: inline-block;\n  width: 42%; }\n\n.u-group-list li {\n  padding: 3px; }\n\n.u-group-list input[type=text], .u-group-list input[type=number] {\n  width: 50%;\n  padding: 2px;\n  font-size: 12px; }\n\n.myData-input {\n  display: none; }\n\n#btnAdd, #btnSave {\n  margin: 5px; }\n", ""]);
 
 	// exports
 
@@ -556,101 +603,84 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(7);
-
+	var tableConfig = __webpack_require__(14);
 	tableTmp ={
 	    init:function(obj){
 	        $(obj).removeClass('m-table-content');
-	        var str="<div><table><thead><tr><th>标题一</th>"+
+	        var str="<table><thead><tr><th>标题一</th>"+
 	                "<th>标题二</th><th>标题三</th></tr></thead>"+
-	                "<tbody><tr><td>2</td><td>2</td><td>2</td></tr><tr><td>2</td><td>2</td><td>2</td></tr><tr><td>2</td><td>2</td><td>2</td></tr></tbody></table></div>"
+	                "<tbody><tr><td>col1-1</td><td>col1-2</td><td>col1-3</td></tr><tr><td>col2-1</td><td>col2-2</td><td>col2-3</td></tr><tr><td>col3-1</td><td>col3-2</td><td>col3-3</td></tr></tbody></table>"
 	        var $table = $(str);
 	         $(obj).append($table);
+	    },
+	    update:function(obj){
+	    	var oldStr="",
+	    		$input=$("<input type='text' class='form-control'/>");
+
+	    	$(obj).on('dblclick','th',function(ev){
+	    		var target = ev.target;
+	    		oldStr = target.innerHTML;
+	    		target.innerHTML="";
+	    		$input.val(oldStr);
+	    		$(target).append($input);
+	    		$input.focus();
+	    		$input.on('blur',function(ev){
+	    			var $th = $(this).parent();
+	    			$th.html($(this).val());
+	                tableTmp.edit(obj);
+	    		});
+	    		$input.on('keydown',function(ev){
+	    			if(ev.which==13){
+	    				var $th = $(this).parent();
+	    				$th.html($(this).val());
+	                    tableTmp.edit(obj);
+	    			}
+	    			
+	    		});
+
+	    	});
+	    },
+	    edit:function (obj) {
+	        var ithLen = $(obj).find("th").length;
+	        var strTmp="";
+	        var aliArr=[];
+	        var valArr=[];
+	        for (var i = 0; i < ithLen; i++) {
+	            valArr.push($(obj).find("th").eq(i).html());
+	            // console.log(valArr[i]);
+	            strTmp =[
+	                            '<div class="u-input-group f-input-group"><a href="#" class="f-del">X</a>',
+	                            '<ul class="f-group-list u-group-list">',
+	                            '<li>',
+	                            '<span><label for="title'+(i+1)+'">表头'+(i+1)+':</label></span>',
+	                            '<input type="text" class="title" id="title'+(i+1)+'" value="'+valArr[i]+'" ><br>',
+	                            '</li>',
+	                            '<li><span><label for="colsNum'+(i+1)+'">占据列数:</label></span>',
+	                            '<input type="number" class="colsNum" id="colsNum'+(i+1)+'" value="1" min="1"></li>',
+	                            '<li>',
+	                            '<span>从后台数据中生成:</span>',
+	                            '<label for="fromData'+(i+1)+'-yes">是 </label><input type="radio" name="fromData'+(i+1)+'" id="fromData'+(i+1)+'-yes" class="fromDataRadio" checked="true" value="true"/>',
+	                            '<label for="fromData'+(i+1)+'-no">否 </label><input type="radio" name="fromData'+(i+1)+'" id="fromData'+(i+1)+'-no" class="fromDataRadio" value="false"/>',
+	                            '</li>',
+	                            '<li class="fromData-input">',
+	                            '<span><label for="dataName'+(i+1)+'">对应字段名:</label></span>',
+	                            '<input type="text" class="dataName" id="dataName'+(i+1)+'" placeholder="多个用英文逗号隔开"/>',
+	                            '</li>',
+	                            '<li class="myData-input">',
+	                            '<span><label for="htmlVal'+(i+1)+'">对应内容:</label></span>',
+	                            '<input type="text" class="htmlVal" id="htmlVal'+(i+1)+'" placeholder="多个用英文逗号隔开">',
+	                            '</li></ul></div>'
+	                        ].join("");
+	           
+	            aliArr.push(strTmp);
+	        }
+	         $('.u-edit-box').html(aliArr.join(''));
+	        var strbtn='<button id="btnAdd" class="btn btn-success btn-xs">添加</button>'+
+	        '<button id="btnSave" class="btn btn-primary btn-xs">保存</button>';
+	        $('.u-edit-btn-box').html(strbtn);
 	    }
 	}
 	 module.exports=tableTmp;
-
-
-
-	// tableTmp ={
-
-	//     init:function(data,tableConfiger){
-
-	//         var sortdata=[]
-	//             ,idData=[]
-	//             ,mapArray=tableConfiger.titleMap
-	//             ,idArr = tableConfiger.tableId
-	//             ,table=$("<table></table>")
-	//             ,headTr=  $("<tr></tr>");
-
-	//         //返回一个titleValue数组
-	//         function getValues(){
-	//         var arr=[];
-	//         for(var i=0,len=mapArray.length;i<len;i++){
-	//             var titleValueArray=mapArray[i].titleValue;
-	//             for(var j=0;j<titleValueArray.length;j++){
-	//                arr.push(titleValueArray[j]);
-	//             }
-	//         }
-	//         return arr;
-	//         }
-
-	//         //返回id数组
-	//         function getId(){
-	//             var arr=[];
-	//             // for (var i = 0,len=idArr.length; i < len; i++) {
-	//                var idValArr =idArr[0].id;
-	//                for (var j = 0,len2=idValArr.length; j <len2 ; j++) {
-	//                    arr.push(idValArr[j]);
-	//                }
-	//             // }
-	//             // console.log(idValArr);
-	//             return arr; 
-	//          }
-
-	//         for(var i=0,len=mapArray.length;i<len;i++){
-	//             if(mapArray[i].titleName){
-	//                 var th=$("<th></th>");
-	//                 th.text(mapArray[i].titleName);
-	//                 th.attr('colspan',mapArray[i].titleValue.length);
-	//                 headTr.append(th); 
-	//             }
-	            
-	//         }
-	//          table.append(headTr); 
-	//          sortdata=getValues();
-	//          idData=getId();
-	   
-	//         for(var i=0,len=data.length;i<len;i++){
-	//             var tr=$('<tr></tr>');
-	//            for(var j=0,len2=sortdata.length;j<len2;j++){
-	//             var td=$("<td></td>");
-	//             if(sortdata[j].fromData){
-	//                 td.html(data[i][sortdata[j].val]);
-	//             }else{
-	//                 td.html(sortdata[j].htmlVal);
-	//             }
-
-	//             tr.append(td);
-	//            }
-
-	//             for (var k = 0,len3=idData.length; k < len3; k++) {
-	//                 var keyName=idData[k]["val"];
-	//                 tr.attr('data-'+keyName+'',data[i][idData[k].val]);
-	//                 // if(tr.find('button')){tr.find('button').attr('data-id',data[i][idData[k].val])}
-	//                 // if(tr.find('a')){tr.find('a').attr('data-id',data[i][idData[k].val])}
-	//                 // if(tr.find('input[type="button"]')){tr.find('input[type="button"]').attr('data-id',data[i][idData[k].val])}
-	//             }
-
-	//            table.append(tr);
-	//         }
-
-	//         $("body").append(table);
-	   
-	//     }
-	//  }
-
-	// // homepage.init(data);
-	// module.exports=tableTmp;
 
 
 /***/ },
@@ -688,9 +718,262 @@
 
 
 	// module
-	exports.push([module.id, "table {\n  width: 80%;\n  min-width: 950px;\n  box-sizing: border-box;\n  font-size: 13px;\n  margin-top: 10px;\n  border: 1px solid #ddd;\n  border-collapse: collapse;\n  margin: 20px auto 0;\n  color: #000; }\n  table th {\n    text-align: center;\n    min-width: 60px;\n    height: 50px; }\n  table tbody, table tr {\n    box-sizing: border-box; }\n  table tr {\n    background-color: #fff;\n    height: 30px; }\n    table tr td {\n      border: 1px solid #eaeaea;\n      text-align: center;\n      font-size: 12px;\n      height: 50px; }\n    table tr:nth-of-type(odd) {\n      background-color: #fefefe; }\n    table tr:nth-of-type(even) {\n      background-color: #fff; }\n  table input[type=\"button\"], table button {\n    color: red;\n    background-color: #fff;\n    border: 1px solid #e84a5f;\n    cursor: pointer;\n    border-radius: 2px; }\n  table input[type=\"button\"]:focus, table button:focus {\n    outline: none; }\n  table a {\n    text-decoration: none;\n    color: red;\n    cursor: pointer; }\n", ""]);
+	exports.push([module.id, "table {\n  width: 80%;\n  min-width: 950px;\n  box-sizing: border-box;\n  font-size: 13px;\n  margin-top: 10px;\n  border: 1px solid #ddd;\n  border-collapse: collapse;\n  margin: 20px auto 0;\n  color: #000; }\n  table th {\n    text-align: center;\n    min-width: 60px;\n    height: 50px; }\n  table tbody, table tr {\n    box-sizing: border-box; }\n  table tr {\n    background-color: #fff;\n    height: 30px; }\n    table tr td {\n      border: 1px solid #eaeaea;\n      text-align: center;\n      font-size: 12px;\n      height: 50px; }\n    table tr:nth-of-type(odd) {\n      background-color: #fefefe; }\n    table tr:nth-of-type(even) {\n      background-color: #fff; }\n  table input[type=\"text\"] {\n    width: 50%;\n    margin: 0 auto; }\n  table input[type=\"button\"], table button {\n    color: red;\n    background-color: #fff;\n    border: 1px solid #e84a5f;\n    cursor: pointer;\n    border-radius: 2px; }\n  table input[type=\"button\"]:focus, table button:focus {\n    outline: none; }\n  table a {\n    text-decoration: none;\n    color: red;\n    cursor: pointer; }\n", ""]);
 
 	// exports
+
+
+/***/ },
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */
+/***/ function(module, exports) {
+
+	
+		window.tableConfig={
+			tableInit:function(obj,ithLen,aliArr){
+
+				var oTab=null,
+					num=ithLen,
+					liArr=aliArr,
+					// liArr=$('.f-input-group'),
+					valArr=[],
+					valCol=[],valChoose=[],valfield=[],valHtml=[];
+
+					for (var i = 0; i < ithLen; i++) {
+						// liArr.push($(obj).find('.f-input-group').get(i));
+						valArr.push($(obj).find("th").eq(i).html());
+					}
+				console.log("开始",liArr);
+					// alert(num);
+				$('.u-edit-btn-box').on('click','#btnAdd',addInput);
+
+				$('.u-edit-btn-box').on('click','#btnSave',function(){
+
+					createConfig();
+					createTbl(obj);
+					var haha = configText(valArr,valCol,valChoose,valfield,valHtml);
+					// 去掉构造函数实例两边的双引号
+					var reg =new RegExp('"[^\".\"$]+"', "g");
+					hahaEnd =JSON.stringify(haha);
+					hahaEnd =hahaEnd.replace(reg, function(v){
+						return v.substr(1,v.length-2);
+					});
+
+					configAllText = "function TableVal(fromData,val,htmlVal){this.fromData=fromData;this.val=val;this.htmlVal=htmlVal;}"+
+									"var tableConfiger="+hahaEnd+";module.exports=tableConfiger;";
+					// $('.codeHtml').text(configAllText);
+				});
+				
+				// $('#hideBtn').on('click',addHide);
+				
+				// $('.hide-group-list').on('click','.hide-del',delHide);
+
+				$('.u-edit-box').on('click','.fromDataRadio',chooseInp);
+				
+				$('.u-edit-box').on('click','.f-del',delGroup);
+
+				//删除隐藏字段
+				// function delHide(){
+				// 	hideLiArr.splice(hideNum-1,1);
+				// 	$('.hide-group-list').html(hideLiArr.join(''));
+				// 	hideNum--;
+				// }
+
+				//清空
+				function clear(){
+					// num=ithLen;
+					// liArr.length=0;
+					valArr.length=0;
+					valCol.length=0;
+					valChoose.length=0;
+					valfield.length=0;
+					valHtml.length=0;
+					// valHide.length=0;
+					// hideLiArr.length=0;
+				}
+
+
+				//添加隐藏字段
+				// function addHide(){
+				// 	hideNum++;
+				// 	var strTmp=[
+				// 		'<li><span><label for="hideTitle'+hideNum+'">隐藏字段'+hideNum+':</label></span>',
+				// 		'<input type="text" class="hideTitle" id="hideTitle'+hideNum+'" placeholder="隐藏字段将会添加到每一行上">',
+				// 		'<a href="#" class="hide-del">&nbsp;&nbsp;x</a></li>'
+				// 	].join('');
+				// 	hideLiArr.push(strTmp);
+				// 	$('.hide-group-list').append(strTmp);
+
+				// }
+
+				//删除表单组
+				function delGroup(){
+					liArr.splice(num-1,1);
+					valArr.splice(num-1,1);
+					valCol.splice(num-1,1);
+					valChoose.splice(num-1,1);
+					valfield.splice(num-1,1);
+					valHtml.splice(num-1,1);
+					$('.u-edit-box').html(liArr.join(''));
+					num--;	
+				}
+
+
+				//生成配置文件
+				function createConfig(){
+					
+					clear();
+					
+					$('.u-edit-box').find('.title').each(function(index,item){
+						valArr.push($(item).val());
+						valCol.push(parseInt($('.colsNum').eq(index).val()));
+						valChoose.push($('.fromDataRadio:checked').eq(index).val());
+						valfield.push($('.dataName').eq(index).val());
+						valHtml.push($('.htmlVal').eq(index).val());					
+					});
+					console.log("生成配置文件",liArr);
+					// $('.hideTitle').each(function(index,item){
+					// 	valHide.push($(item).val());
+					// });
+
+				}
+
+				//confige文件
+				function configText(valArr,valCol,valChoose,valfield,valHtml,valHide){
+					// alert(valHide.length);
+					var tableConfiger={'titleMap':[],'tableId':[{'id':[]}]};
+					for(var i=0;i<valArr.length;i++){
+						tableConfiger.titleMap.push({});
+						tableConfiger.titleMap[i].titleValue=[];
+						tableConfiger.titleMap[i].titleName="'"+valArr[i]+"'";
+						console.log(tableConfiger.titleMap,valArr[i]);
+						if(valChoose[i]=="true"){
+							if(valCol[i]>1){
+								var colfield=valfield[i].split(',');
+								console.log(tableConfiger.titleMap[i].titleValue);
+								console.log("colfield",colfield);
+								for (var j = 0; j < colfield.length; j++) {
+									tableConfiger.titleMap[i].titleValue.push("new TableVal(false,'','"+colfield[j]+"')");
+									// tableConfiger.titleMap[i].titleValue
+								}
+							}else{
+								tableConfiger.titleMap[i].titleValue=["new TableVal(true,'"+valfield[i]+"')"];
+							}
+							
+						}else{
+							if(valCol[i]>1){
+								var colHtml=valHtml[i].split(',');
+								for (var j = 0; j < colHtml.length; j++) {
+									tableConfiger.titleMap[i].titleValue.push("new TableVal(false,'','<button>"+colHtml[j]+"</button>')");
+								}
+							}else{
+								tableConfiger.titleMap[i].titleValue=["new TableVal(false,'','<button>"+valHtml[i]+"</button>')"];
+							}
+							
+						}
+					}
+
+					// for (var k = 0; k < valHide.length; k++) {
+					// 	tableConfiger.tableId[0].id.push("new TableVal(true,'"+valHide[k]+"')");
+					// }
+					return tableConfiger;
+
+				}
+				//选择radio
+				function chooseInp(){
+					var $graPan = $(this).parent().parent(),
+						$fromDataInput=$graPan.find('.fromData-input'),
+						$myDataInput = $graPan.find('.myData-input');
+					if($(this).val()=="true"){
+						$fromDataInput.show();
+						$myDataInput.hide();
+					}else{
+						$fromDataInput.hide();
+						$myDataInput.show();
+					}
+				}
+
+				//生成自定义输入框
+				function addInput() {
+					num++;
+					var strTmp =[
+	                            '<div class="u-input-group f-input-group"><a href="#" class="f-del">X</a>',
+	                            '<ul class="f-group-list u-group-list">',
+	                            '<li>',
+	                            '<span><label for="title'+num+'">表头'+num+':</label></span>',
+	                            '<input type="text" class="title" id="title'+num+'" value="" ><br>',
+	                            '</li>',
+	                            '<li><span><label for="colsNum1">占据列数:</label></span>',
+	                            '<input type="number" class="colsNum" id="colsNum1" value="1" min="1"></li>',
+	                            '<li>',
+	                            '<span>从后台数据中生成:</span>',
+	                            '<label for="fromData'+num+'-yes">是 </label><input type="radio" name="fromData'+num+'" id="fromData'+num+'-yes" class="fromDataRadio" checked="true" value="true"/>',
+	                            '<label for="fromData'+num+'-no">否 </label><input type="radio" name="fromData'+num+'" id="fromData'+num+'-no" class="fromDataRadio" value="false"/>',
+	                            '</li>',
+	                            '<li class="fromData-input">',
+	                            '<span><label for="dataName'+num+'">对应字段名:</label></span>',
+	                            '<input type="text" class="dataName" id="dataName'+num+'" placeholder="多个用英文逗号隔开"/>',
+	                            '</li>',
+	                            '<li class="myData-input">',
+	                            '<span><label for="htmlVal'+num+'">对应内容:</label></span>',
+	                            '<input type="text" class="htmlVal" id="htmlVal'+num+'" placeholder="多个用英文逗号隔开">',
+	                            '</li></ul></div>'
+	                        ].join("");
+					liArr.push(strTmp);
+					// console.log(liArr);
+					$('.u-edit-box').append(liArr[num-1]);
+					console.log(num);
+				}
+
+				//生成表格
+				function createTbl(obj) {
+					var $title = $('.u-edit-box').find('.title');
+
+					var iCols = $title.length;
+					var allColNum=valCol.reduce(function(prev,cur,index,array){
+						return prev+cur;
+					});
+					
+					oTab=null;
+
+					var oth = null,otd=null;
+					console.log(obj);
+
+					$(obj).find('table').remove();
+
+					if(!oTab){
+						oTab=$('<table><thead><tr></tr></thead><tbody><tr></tr><tr></tr><tr></tr></tbody></table>');
+						for (var i = 0; i < iCols; i++) {
+							oth=$('<th></th>');
+							oth.attr('colspan',valCol[i]);
+							oth.html($title.eq(i).val());
+							oTab.find('tr').eq(0).append(oth);
+							
+						}
+						var trlen = oTab.find('tr').length;
+						for (var j = 1; j < trlen; j++) {
+							for (var i = 0; i < allColNum; i++) {
+								otd=$('<td></td>');
+								otd.html('模板数据'+(i+1));
+								oTab.find('tr').eq(j).append(otd);
+							}
+						}
+						
+
+						$(obj).append(oTab);
+						$('.u-edit-box').html("");
+						$('.u-edit-btn-box').html("");
+
+					}
+				}
+			}
+		}
+		homepage.tableInit();
+		// module.exports=window.tableConfig;
 
 
 /***/ }

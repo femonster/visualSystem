@@ -58,15 +58,14 @@
         }
     });
 
-    //删除布局框
+    //删除布局组件
     $(oAimWrap).on('click','.m-demo-del-handler',function(){
         $(this).parent().remove();
     });
 
-    //编辑布局框
+    //编辑布局组件
     $(oAimWrap).on('click','.m-demo-update-handler',function(ev){
         var oBoxParNam = this.parentElement.dataset.aname;
-        alert(oBoxParNam);
         if(oBoxParNam=="header"){
             updateHeader(this.parentElement);
         }
@@ -180,10 +179,13 @@
 
     //编辑组件(obj是指当前组件的DOM元素,需要jq元素时需要用$(obj))
     function updateHeader(obj) {
-        
+        $('.u-edit-box').html("wahaha");
     }
     function updateTable(obj) {
-        
+        if($('.u-input-group').length<=0){
+             tableTmp.edit(obj);
+         }
+       
     }
     function updateNav(obj) {
         

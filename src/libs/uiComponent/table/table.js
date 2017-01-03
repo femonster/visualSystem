@@ -1,11 +1,11 @@
 require('./table.scss');
-
+var tableConfig = require('./tableConfig.js');
 tableTmp ={
     init:function(obj){
         $(obj).removeClass('m-table-content');
-        var str="<div><table><thead><tr><th>标题一</th>"+
+        var str="<table><thead><tr><th>标题一</th>"+
                 "<th>标题二</th><th>标题三</th></tr></thead>"+
-                "<tbody><tr><td>col1-1</td><td>col1-2</td><td>col1-3</td></tr><tr><td>col2-1</td><td>col2-2</td><td>col2-3</td></tr><tr><td>col3-1</td><td>col3-2</td><td>col3-3</td></tr></tbody></table></div>"
+                "<tbody><tr><td>col1-1</td><td>col1-2</td><td>col1-3</td></tr><tr><td>col2-1</td><td>col2-2</td><td>col2-3</td></tr><tr><td>col3-1</td><td>col3-2</td><td>col3-3</td></tr></tbody></table>"
         var $table = $(str);
          $(obj).append($table);
     },
@@ -23,99 +23,57 @@ tableTmp ={
     		$input.on('blur',function(ev){
     			var $th = $(this).parent();
     			$th.html($(this).val());
+                tableTmp.edit(obj);
     		});
     		$input.on('keydown',function(ev){
     			if(ev.which==13){
     				var $th = $(this).parent();
     				$th.html($(this).val());
+                    tableTmp.edit(obj);
     			}
     			
     		});
 
     	});
+    },
+    edit:function (obj) {
+        var ithLen = $(obj).find("th").length;
+        var strTmp="";
+        var aliArr=[];
+        var valArr=[];
+        for (var i = 0; i < ithLen; i++) {
+            valArr.push($(obj).find("th").eq(i).html());
+            // console.log(valArr[i]);
+            strTmp =[
+                            '<div class="u-input-group f-input-group"><a href="#" class="f-del">X</a>',
+                            '<ul class="f-group-list u-group-list">',
+                            '<li>',
+                            '<span><label for="title'+(i+1)+'">表头'+(i+1)+':</label></span>',
+                            '<input type="text" class="title" id="title'+(i+1)+'" value="'+valArr[i]+'" ><br>',
+                            '</li>',
+                            '<li><span><label for="colsNum'+(i+1)+'">占据列数:</label></span>',
+                            '<input type="number" class="colsNum" id="colsNum'+(i+1)+'" value="1" min="1"></li>',
+                            '<li>',
+                            '<span>从后台数据中生成:</span>',
+                            '<label for="fromData'+(i+1)+'-yes">是 </label><input type="radio" name="fromData'+(i+1)+'" id="fromData'+(i+1)+'-yes" class="fromDataRadio" checked="true" value="true"/>',
+                            '<label for="fromData'+(i+1)+'-no">否 </label><input type="radio" name="fromData'+(i+1)+'" id="fromData'+(i+1)+'-no" class="fromDataRadio" value="false"/>',
+                            '</li>',
+                            '<li class="fromData-input">',
+                            '<span><label for="dataName'+(i+1)+'">对应字段名:</label></span>',
+                            '<input type="text" class="dataName" id="dataName'+(i+1)+'" placeholder="多个用英文逗号隔开"/>',
+                            '</li>',
+                            '<li class="myData-input">',
+                            '<span><label for="htmlVal'+(i+1)+'">对应内容:</label></span>',
+                            '<input type="text" class="htmlVal" id="htmlVal'+(i+1)+'" placeholder="多个用英文逗号隔开">',
+                            '</li></ul></div>'
+                        ].join("");
+           
+            aliArr.push(strTmp);
+        }
+         $('.u-edit-box').html(aliArr.join(''));
+        var strbtn='<button id="btnAdd" class="btn btn-success btn-xs">添加</button>'+
+        '<button id="btnSave" class="btn btn-primary btn-xs">保存</button>';
+        $('.u-edit-btn-box').html(strbtn);
     }
 }
  module.exports=tableTmp;
-
-
-
-// tableTmp ={
-
-//     init:function(data,tableConfiger){
-
-//         var sortdata=[]
-//             ,idData=[]
-//             ,mapArray=tableConfiger.titleMap
-//             ,idArr = tableConfiger.tableId
-//             ,table=$("<table></table>")
-//             ,headTr=  $("<tr></tr>");
-
-//         //返回一个titleValue数组
-//         function getValues(){
-//         var arr=[];
-//         for(var i=0,len=mapArray.length;i<len;i++){
-//             var titleValueArray=mapArray[i].titleValue;
-//             for(var j=0;j<titleValueArray.length;j++){
-//                arr.push(titleValueArray[j]);
-//             }
-//         }
-//         return arr;
-//         }
-
-//         //返回id数组
-//         function getId(){
-//             var arr=[];
-//             // for (var i = 0,len=idArr.length; i < len; i++) {
-//                var idValArr =idArr[0].id;
-//                for (var j = 0,len2=idValArr.length; j <len2 ; j++) {
-//                    arr.push(idValArr[j]);
-//                }
-//             // }
-//             // console.log(idValArr);
-//             return arr; 
-//          }
-
-//         for(var i=0,len=mapArray.length;i<len;i++){
-//             if(mapArray[i].titleName){
-//                 var th=$("<th></th>");
-//                 th.text(mapArray[i].titleName);
-//                 th.attr('colspan',mapArray[i].titleValue.length);
-//                 headTr.append(th); 
-//             }
-            
-//         }
-//          table.append(headTr); 
-//          sortdata=getValues();
-//          idData=getId();
-   
-//         for(var i=0,len=data.length;i<len;i++){
-//             var tr=$('<tr></tr>');
-//            for(var j=0,len2=sortdata.length;j<len2;j++){
-//             var td=$("<td></td>");
-//             if(sortdata[j].fromData){
-//                 td.html(data[i][sortdata[j].val]);
-//             }else{
-//                 td.html(sortdata[j].htmlVal);
-//             }
-
-//             tr.append(td);
-//            }
-
-//             for (var k = 0,len3=idData.length; k < len3; k++) {
-//                 var keyName=idData[k]["val"];
-//                 tr.attr('data-'+keyName+'',data[i][idData[k].val]);
-//                 // if(tr.find('button')){tr.find('button').attr('data-id',data[i][idData[k].val])}
-//                 // if(tr.find('a')){tr.find('a').attr('data-id',data[i][idData[k].val])}
-//                 // if(tr.find('input[type="button"]')){tr.find('input[type="button"]').attr('data-id',data[i][idData[k].val])}
-//             }
-
-//            table.append(tr);
-//         }
-
-//         $("body").append(table);
-   
-//     }
-//  }
-
-// // homepage.init(data);
-// module.exports=tableTmp;

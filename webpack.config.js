@@ -48,7 +48,9 @@ module.exports = {
             "nav": path.join(__dirname, "src/libs/uiComponent/nav/nav.js"),
             "page": path.join(__dirname, "src/libs/uiComponent/page/page.js"),
             "form": path.join(__dirname, "src/libs/uiComponent/form/form.js"),
-            "confirmBox":path.join(__dirname, "src/libs/uiComponent/confirmBox/confirmBox.js")
+            "confirmBox":path.join(__dirname, "src/libs/uiComponent/confirmBox/confirmBox.js"),
+            "tableConfig":path.join(__dirname, "src/libs/uiComponent/table/tableConfig.js")
+
             
         }
     },
